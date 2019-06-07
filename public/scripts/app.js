@@ -28,9 +28,13 @@ var remove = function remove() {
     renderTemplate();
 };
 
-var appRoot = document.getElementById('app');
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+    alert(option);
+};
 
-var numbers = [55, 101, 1000];
+var appRoot = document.getElementById('app');
 
 var renderTemplate = function renderTemplate() {
     var template = React.createElement(
@@ -52,9 +56,14 @@ var renderTemplate = function renderTemplate() {
             app.options.length > 0 ? 'Aqui esta suas opções !' : 'Não a opções no momento !'
         ),
         React.createElement(
-            'p',
-            null,
-            app.options.length
+            'button',
+            { disabled: app.options.length === 0, onClick: onMakeDecision },
+            'What should I do?'
+        ),
+        React.createElement(
+            'button',
+            { onClick: remove },
+            'Remove All'
         ),
         React.createElement(
             'ol',
@@ -77,11 +86,6 @@ var renderTemplate = function renderTemplate() {
                 null,
                 'Add Option'
             )
-        ),
-        React.createElement(
-            'button',
-            { onClick: remove },
-            'Remove All'
         )
     );
     ReactDOM.render(template, appRoot);
