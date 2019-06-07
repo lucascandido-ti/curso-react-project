@@ -22,8 +22,6 @@ const onFormSubmit = (e) => {
     
   };
 
-
-
 const remove = () =>{
     app.options = [];
     renderTemplate();
