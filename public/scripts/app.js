@@ -23,12 +23,14 @@ var onFormSubmit = function onFormSubmit(e) {
     }
 };
 
-var appRoot = document.getElementById('app');
-
 var remove = function remove() {
     app.options = [];
     renderTemplate();
 };
+
+var appRoot = document.getElementById('app');
+
+var numbers = [55, 101, 1000];
 
 var renderTemplate = function renderTemplate() {
     var template = React.createElement(
@@ -47,7 +49,7 @@ var renderTemplate = function renderTemplate() {
         React.createElement(
             'p',
             null,
-            app.options.length > 0 ? 'Here are your options' : 'No options'
+            app.options.length > 0 ? 'Aqui esta suas opções !' : 'Não a opções no momento !'
         ),
         React.createElement(
             'p',
@@ -57,16 +59,14 @@ var renderTemplate = function renderTemplate() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item One'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item Two'
-            )
+            app.options.map(function (op) {
+                return React.createElement(
+                    'li',
+                    { key: op },
+                    'Item: ',
+                    op
+                );
+            })
         ),
         React.createElement(
             'form',

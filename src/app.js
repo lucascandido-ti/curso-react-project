@@ -22,23 +22,28 @@ const onFormSubmit = (e) => {
     
   };
 
-const appRoot = document.getElementById('app');
+
 
 const remove = () =>{
     app.options = [];
     renderTemplate();
 };
 
+const appRoot = document.getElementById('app');
+
+const numbers = [55, 101, 1000];
+
 const renderTemplate = () =>{
     const template = (
         <div>
             <h1>{app.title}</h1>
             {app.subtitle && <p>{app.subtitle}</p>}
-            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+            <p>{app.options.length > 0 ? 'Aqui esta suas opções !' : 'Não a opções no momento !'}</p>
             <p>{app.options.length}</p>
             <ol>
-                <li>Item One</li>
-                <li>Item Two</li>
+            {
+                app.options.map( (op) => <li key={op}>Item: {op}</li> )
+            }
             </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>
