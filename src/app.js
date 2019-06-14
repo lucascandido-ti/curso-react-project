@@ -40,8 +40,12 @@ class Action extends React.Component{
 
 
 class Options extends React.Component{
+    constructor(props){
+        super(props);
+        this.removeOption = this.removeOption.bind(this);
+    }
     removeOption(){
-        alert('removeoptions');
+        console.log(this.props.options);
     }
     render(){
         return (
