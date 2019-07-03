@@ -59,54 +59,96 @@ class IndecisionApp extends React.Component{
     }
 }
 
-class Header extends React.Component{
-    render() {
-        return (
-          <div>
-            <h1>{this.props.title}</h1>
-            <h2>{this.props.subtitle}</h2>
-          </div>  
-        );
-    }
+const Header = (props) =>{
+    return(
+        <div>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
+          </div> 
+    )
 }
 
-class Action extends React.Component{
-    render() {
-        return (
-            <div>
-                <button 
-                onClick={this.props.handlerPick}
-                disabled={!this.props.hasOptions}
+
+// class Header extends React.Component{
+//     render() {
+//         return (
+//           <div>
+//             <h1>{this.props.title}</h1>
+//             <h2>{this.props.subtitle}</h2>
+//           </div>  
+//         );
+//     }
+// }
+
+const Action = (props) =>{
+    return(
+        <div>
+            <button 
+                onClick={props.handlerPick}
+                disabled={!props.hasOptions}
                 >
                 What should I do?
-                </button>
-            </div>
-        );
-    }
+            </button>
+        </div>
+    )
+}
+
+// class Action extends React.Component{
+//     render() {
+//         return (
+//             <div>
+//                 <button 
+//                 onClick={this.props.handlerPick}
+//                 disabled={!this.props.hasOptions}
+//                 >
+//                 What should I do?
+//                 </button>
+//             </div>
+//         );
+//     }
+// }
+
+
+const Options = (props) =>{
+    return(
+        <div>
+            <button onClick={props.handlerDeleteOptions}>Remove Options</button>
+            {props.options.map((op) => <Option key={op} optionText={op}/>)}
+        </div>
+    )
+}
+
+// class Options extends React.Component{
+
+//     render(){
+//         return (
+//             <div>
+//                 <button onClick={this.props.handlerDeleteOptions}>Remove Options</button>
+//                 {this.props.options.map((op) => <Option key={op} optionText={op}/>)}
+//             </div>
+//         );
+//     }
+// }
+
+
+const Option = (props) => {
+    return(
+        <div>
+            Option: {props.optionText}
+        </div>
+    )
 }
 
 
-class Options extends React.Component{
-
-    render(){
-        return (
-            <div>
-                <button onClick={this.props.handlerDeleteOptions}>Remove Options</button>
-                {this.props.options.map((op) => <Option key={op} optionText={op}/>)}
-            </div>
-        );
-    }
-}
-
-class Option extends React.Component{
-    render(){
-        return(
-            <div>
-               Option: {this.props.optionText}
-            </div>
-        );
-    }
-}
+// class Option extends React.Component{
+//     render(){
+//         return(
+//             <div>
+//                Option: {this.props.optionText}
+//             </div>
+//         );
+//     }
+// }
 
 class AddOption extends React.Component{
 
@@ -141,6 +183,15 @@ class AddOption extends React.Component{
             </div>
         );
     }
+}
+
+const User = (props) => {
+    return(
+        <div>
+            <p>Name: {props.name}</p>
+            <p>Age: {props.age}</p>
+        </div>
+    )
 }
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
