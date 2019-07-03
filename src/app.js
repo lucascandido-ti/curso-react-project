@@ -5,7 +5,7 @@ class IndecisionApp extends React.Component{
         this.handlerPick = this.handlerPick.bind(this)
         this.handlerAddOption = this.handlerAddOption.bind(this)
         this.state = {
-            options: []
+            options: props.options
         }
     }
 
@@ -42,7 +42,7 @@ class IndecisionApp extends React.Component{
         
         return (
             <div> 
-                <Header title={title} subtitle={subtitle}/>
+                <Header subtitle={subtitle}/>
                 <Action
                 hasOptions={this.state.options.length > 0}
                 handlerPick={this.handlerPick}
@@ -59,26 +59,23 @@ class IndecisionApp extends React.Component{
     }
 }
 
+IndecisionApp.defaultProps = {
+    options: []
+}
+
 const Header = (props) =>{
     return(
         <div>
             <h1>{props.title}</h1>
-            <h2>{props.subtitle}</h2>
+            {props.subtitle && <h2>{props.subtitle}</h2>}
+            {/* <h2>{props.subtitle}</h2> */}
           </div> 
     )
 }
 
-
-// class Header extends React.Component{
-//     render() {
-//         return (
-//           <div>
-//             <h1>{this.props.title}</h1>
-//             <h2>{this.props.subtitle}</h2>
-//           </div>  
-//         );
-//     }
-// }
+Header.defaultProps = {
+    title: 'Indecision'
+}
 
 const Action = (props) =>{
     return(
@@ -93,22 +90,6 @@ const Action = (props) =>{
     )
 }
 
-// class Action extends React.Component{
-//     render() {
-//         return (
-//             <div>
-//                 <button 
-//                 onClick={this.props.handlerPick}
-//                 disabled={!this.props.hasOptions}
-//                 >
-//                 What should I do?
-//                 </button>
-//             </div>
-//         );
-//     }
-// }
-
-
 const Options = (props) =>{
     return(
         <div>
@@ -118,19 +99,6 @@ const Options = (props) =>{
     )
 }
 
-// class Options extends React.Component{
-
-//     render(){
-//         return (
-//             <div>
-//                 <button onClick={this.props.handlerDeleteOptions}>Remove Options</button>
-//                 {this.props.options.map((op) => <Option key={op} optionText={op}/>)}
-//             </div>
-//         );
-//     }
-// }
-
-
 const Option = (props) => {
     return(
         <div>
@@ -138,17 +106,6 @@ const Option = (props) => {
         </div>
     )
 }
-
-
-// class Option extends React.Component{
-//     render(){
-//         return(
-//             <div>
-//                Option: {this.props.optionText}
-//             </div>
-//         );
-//     }
-// }
 
 class AddOption extends React.Component{
 
