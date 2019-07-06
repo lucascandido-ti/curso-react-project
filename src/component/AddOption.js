@@ -13,7 +13,7 @@ export default class AddOption extends React.Component{
 
     handlerAddOption(e){
         e.preventDefault();
-
+        console.log('testting')
         const option = e.target.elements.option.value.trim();
         const error = this.props.handlerAddOption(option);
         
