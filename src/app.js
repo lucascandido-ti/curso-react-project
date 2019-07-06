@@ -1,25 +1,6 @@
-// import './until' 
-// import { square, add } from './until'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-// console.log('app.js is running')
+const template = <p>This is JSX From Webpack</p>
 
-// import { isAdult, canDrink } from './person'
-
-// if(isAdult(18)){
-//     console.log('Is an Adult')
-// }else{
-//     console.log('Not an Adult')
-// }
-
-// if(canDrink(21)){
-//     console.log('Can Drink')
-// }else{
-//     console.log('Not can Drink')
-// }
-import isSenior from './until'
-
-if(isSenior(60)){
-    console.log('Old man')
-}else{
-    console.log('Isnt old man')
-}
+ReactDOM.render(template, document.getElementById('app'))
