@@ -5,18 +5,12 @@ import Header from './Header'
 import Options from './Options'
 
 class IndecisionApp extends React.Component{
-    constructor(props){
-        super(props);
-        this.handlerDeleteOptions = this.handlerDeleteOptions.bind(this)
-        this.handlerDeleteOption=this.handlerDeleteOption.bind(this)
-        this.handlerPick = this.handlerPick.bind(this)
-        this.handlerAddOption = this.handlerAddOption.bind(this)
-        this.state = {
-            options: props.options
-        }
+    
+    state = {
+        options: []
     }
 
-    componentDidMount(){
+    componentDidMount = () => {
         try{
         const json = localStorage.getItem('options')
         const options = JSON.parse(json)
@@ -29,22 +23,22 @@ class IndecisionApp extends React.Component{
         }
     }
 
-    componentDidUpdate(prevProps, prevState){
+    componentDidUpdate = (prevProps, prevState) => {
         if(prevState.options.length !== this.state.options.length){
             const json = JSON.stringify(this.state.options)
             localStorage.setItem('options', json)
         }
     }
 
-    componentWillUnmount(){
+    componentWillUnmount = () =>{
         console.log('componentWillUnmount!')
     }
 
-    handlerDeleteOptions(){
+    handlerDeleteOptions = () => {
         this.setState(() =>({ options: [] }))
     }
 
-    handlerDeleteOption(optionToRemove) {
+    handlerDeleteOption = (optionToRemove) => {
         this.setState((prevState)=>({
             options: prevState.options.filter((option)=>{
                 return optionToRemove !== option;
@@ -52,13 +46,13 @@ class IndecisionApp extends React.Component{
         }))
     }
 
-    handlerPick(){
+    handlerPick = () => {
         const random = Math.floor(Math.random() * this.state.options.length)
         const op = this.state.options[random]
         alert(op)
     }
 
-    handlerAddOption(option){
+    handlerAddOption = (option) =>{
         if(!option){
             return 'Enter valid value to add item';
         }else if (this.state.options.indexOf(option) > -1){
